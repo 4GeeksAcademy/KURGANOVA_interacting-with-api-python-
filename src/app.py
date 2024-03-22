@@ -5,7 +5,10 @@ from dotenv import load_dotenv
 
 # load the .env file variables
 load_dotenv()
+client_id = os.environ.get("CLIENT_ID")
+client_secret = os.environ.get("CLIENT_SECRET")
 
+s=spotipy.Spotify()
 # 1) Connect to the database here using the SQLAlchemy's create_engine function
 
 # 2) Execute the SQL sentences to create your tables using the SQLAlchemy's execute function

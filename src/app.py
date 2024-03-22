@@ -36,8 +36,25 @@ for album in albums:
 
 results = spotify.artist_top_tracks(shakira)
 
+nombre_cancion = []
+popularidad = []
+duracion_minutos = []
+
 for track in results['tracks'][:10]:
-    print('track    : ' + str(track['name']))
-    print('popularidad    : ' + str(track['popularity']))
-    print('duracion: ' + str(track['duration_ms']))
+    nombre_cancion.append(track['name'])
+    popularidad.append(track['popularity'])
+    duracion_ms = track['duration_ms']  # Duración en milisegundos
+    # Convertir la duración de milisegundos a minutos 
+    duracion_minutos.append(duracion_ms / 60000)  # 1 minuto = 60000 miliseg
     print()
+
+    print("Nombre:", nombre_cancion)
+    print("Popularidad:", popularidad)
+    print("Duración (minutos):", duracion_minutos)
+    print()
+    # Crear un DataFrame de Pandas
+df = pd.DataFrame({'Nombre': nombre_cancion, 'Popularidad': popularidad, 'Duración (minutos)': duracion_minutos})
+
+# Imprimir el DataFrame
+print(df)
+

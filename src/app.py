@@ -5,14 +5,39 @@ from dotenv import load_dotenv
 
 # load the .env file variables
 load_dotenv()
-client_id = os.environ.get("CLIENT_ID")
-client_secret = os.environ.get("CLIENT_SECRET")
 
-s=spotipy.Spotify()
-# 1) Connect to the database here using the SQLAlchemy's create_engine function
 
-# 2) Execute the SQL sentences to create your tables using the SQLAlchemy's execute function
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 
-# 3) Execute the SQL sentences to insert your data using the SQLAlchemy's execute function
+birdy_uri = 'spotify:artist:2WX2uTcsvV5OnS0inACecP'
+spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
-# 4) Use pandas to print one of the tables as dataframes using read_sql function
+results = spotify.artist_albums(birdy_uri, album_type='album')
+albums = results['items']
+while results['next']:
+    results = spotify.next(results)
+    albums.extend(results['items'])
+
+for album in albums:
+    print(album['name'])
+
+
+shakira= 'spotify:artist:0EmeFodog0BfCgMzAIvKQp'
+
+results = spotify.artist_albums(birdy_uri, album_type='album')
+albums = results['items']
+while results['next']:
+    results = spotify.next(results)
+    albums.extend(results['items'])
+
+for album in albums:
+    print(album['name'])
+
+results = spotify.artist_top_tracks(shakira)
+
+for track in results['tracks'][:10]:
+    print('track    : ' + str(track['name']))
+    print('popularidad    : ' + str(track['popularity']))
+    print('duracion: ' + str(track['duration_ms']))
+    print()

@@ -2,6 +2,7 @@ import os
 from sqlalchemy import create_engine
 import pandas as pd
 from dotenv import load_dotenv
+import matplotlib.pyplot as plt
 
 # load the .env file variables
 load_dotenv()
@@ -58,3 +59,10 @@ df = pd.DataFrame({'Nombre': nombre_cancion, 'Popularidad': popularidad, 'Duraci
 # Imprimir el DataFrame
 print(df)
 
+plt.figure(figsize=(10, 6))
+plt.scatter(df['Duración (minutos)'], df['Popularidad'], color='blue', alpha=0.7)
+plt.title('Relación entre Duración y Popularidad de Canciones de Shakira')
+plt.xlabel('Duración (minutos)')
+plt.ylabel('Popularidad')
+plt.grid(True)
+plt.show()

@@ -61,6 +61,6 @@ print(df)
 
 import seaborn as sns
 
-scatter_plot = sns.scatterplot(data = tracks_df, x = "popularity", y = "duration_ms")
+scatter_plot = sns.scatterplot(data = df, x = "popularidad ", y = "duracion_minutos")
 fig = scatter_plot.get_figure()
 fig.savefig("scatter_plot.png")

@@ -59,7 +59,7 @@ df = pd.DataFrame({'Nombre': nombre_cancion, 'Popularidad': popularidad, 'Duraci
 # Imprimir el DataFrame
 print(df)
 
-import seaborn as sns
+
 
 # Graficar el scatter plot
 plt.figure(figsize=(10, 6))

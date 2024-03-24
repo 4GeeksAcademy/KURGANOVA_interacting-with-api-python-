@@ -61,6 +61,11 @@ print(df)
 
 import seaborn as sns
 
-scatter_plot = sns.scatterplot(data = df, x = "popularidad ", y = "duracion_minutos")
-fig = scatter_plot.get_figure()
-fig.savefig("scatter_plot.png")
+# Graficar el scatter plot
+plt.figure(figsize=(10, 6))
+plt.scatter(df['duracion_minutos'], df['popularidad'], color='blue', alpha=0.7)
+plt.title('Relación entre Duración y Popularidad de Canciones de Shakira')
+plt.xlabel('Duración (minutos)')
+plt.ylabel('Popularidad')
+plt.grid(True)
+plt.show()
